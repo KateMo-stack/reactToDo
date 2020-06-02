@@ -33,6 +33,7 @@ export const StyledContainer = Styled.div`
 export const StyledButton = Styled.button`
   {
     padding: .75em;
+    padding-right: 0.95em;
     font-size: 22px;
     border: 1px #677 solid;
     background-color: #E8E8E8 !important;
@@ -41,23 +42,20 @@ export const StyledButton = Styled.button`
     background-size: 0 100%;
     // transition: background-size 1.2s;
     overflow: hidden;
-    transition: background 0.5s ease;
+    transition: background 0.3s ease, color 0.3s 0.2s ease;
   }
   &:hover{
+    // transform lepiej
     background-size: 100% 100%;
     color: white;
   }
-  // &:after{
-  //   animation: slide1 1s ease-in-out infinite;
-  //   content:"";
 
-  // };
-  .arrow1 {
-    animation: slide1 2s ease-in-out infinite;
+  .arrow1{
     margin-left: 9px
-    animation-delay: 0.5s;
-    
-   ;
+  }
+
+  &:hover .arrow1 {
+    animation: slide1 1s 0.25s ease-in-out infinite;
   }
 
   @keyframes slide1 {
