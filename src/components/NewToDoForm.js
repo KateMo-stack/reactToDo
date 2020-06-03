@@ -7,7 +7,7 @@ import { StyledContainerr } from "./StyledParagraph";
 const NewToDoForm = ({ onChange, draft, onSubmit }) => (
   <StyledContainerr>
     <StyledTextInput type="text" onChange={onChange} value={draft} />
-    <StyledButtonForm onClick={onSubmit}>Wielki Plus</StyledButtonForm>
+    <StyledButtonForm onClick={onSubmit}>+</StyledButtonForm>
   </StyledContainerr>
 );
 

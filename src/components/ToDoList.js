@@ -3,6 +3,7 @@ import ToDoItem from "../components/ToDoItem";
 // uważaj żeby wszytsko było zaimportowane, bo przez to może cos nie działać!
 import NewToDoForm from "../components/NewToDoForm";
 import { StyledHeader } from "./StyledParagraph";
+import { DestroyButton } from "./StyledParagraph";
 
 // dump conponents, functional components, single components, trzyjmuje propsy i zwraca fragment UI
 // wersja pierwotna z propsa jako parametrem
@@ -14,10 +15,27 @@ import { StyledHeader } from "./StyledParagraph";
 // );
 
 export class ToDoList extends Component {
+  // cykl życia komponentu poniżej
+  constructor(props) {
+    super(props);
+    console.log("Hello from constructor");
+  }
+
+  componentDidMount = () => {
+    // console.log("component mounted!");
+    fetch("http://localhost:5000/todo_items");
+  };
+
+  componentDidUpdate = () => {
+    console.log("component (ToDoList) updated!");
+  };
   static defaultProps = {
     tasks: [
-      { done: true, text: "Record a ReactJS video" },
-      { done: false, text: "Go for a walk" },
+      // { done: true, text: "Record a ReactJS video" },
+      // { done: false, text: "Go for a walk" },
+      { text: "Record a ReactJS video" },
+      { text: "Go for a walk" },
+      // połączenie z API restowym
     ],
     title: "My Staff",
   };
@@ -39,12 +57,17 @@ export class ToDoList extends Component {
     list.push({ text: draft, done: false });
     this.setState({ tasks: list, draft: "" });
   };
+
+  removeAll = () => {
+    this.setState({ tasks: [] });
+  };
   render() {
     const { title } = this.props;
     const { tasks, draft } = this.state;
     return (
       <div>
         <StyledHeader>{title}</StyledHeader>
+        <DestroyButton onClick={this.removeAll}>Remove all</DestroyButton>
         {tasks.map((task) => (
           <ToDoItem text={task.text} done={task.done} />
         ))}

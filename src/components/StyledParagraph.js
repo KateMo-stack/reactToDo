@@ -94,8 +94,6 @@ export const StyledTextInput = Styled.input`
   width: 100%;
   margin-right: 7px;
   border: 0px;
-
-
 `;
 
 export const StyledContainerr = Styled.div`
@@ -105,4 +103,12 @@ export const StyledContainerr = Styled.div`
   background: #232632;
   border-radius: 10px;
   padding: 5px;
+`;
+
+export const DestroyButton = Styled.button`
+  border-radius: 10px;
+  background: red;
+  padding: 5px;
+  color: #fff;
+  margin-bottom: 10px;
 `;
